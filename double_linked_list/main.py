@@ -10,6 +10,14 @@ class DoublyLinkedList:
         self.tail = None
         self._length = 0
 
-
-
-    
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+        self._length += 1
+        return self
