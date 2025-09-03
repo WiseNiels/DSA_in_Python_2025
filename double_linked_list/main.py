@@ -47,3 +47,15 @@ class DoublyLinkedList:
             self.tail = None
         self._length -= 1
         return removed_data
+
+    def pop_right(self):
+        if not self.tail:
+            return None
+        removed_data = self.tail.data
+        self.tail = self.tail.prev
+        if self.tail:
+            self.tail.next = None
+        else:
+            self.head = None
+        self._length -= 1
+        return removed_data
