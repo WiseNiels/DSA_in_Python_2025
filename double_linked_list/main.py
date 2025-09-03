@@ -22,6 +22,7 @@ class DoublyLinkedList:
             self.tail = new_node
         self._length += 1
         return self
+    
     def prepend(self, data):
         new_node = Node(data)
         if not self.head:
@@ -33,3 +34,16 @@ class DoublyLinkedList:
             self.head = new_node
         self._length += 1
         return self
+
+
+    def pop_left(self):
+        if not self.head:
+            return None
+        removed_data = self.head.data
+        self.head = self.head.next
+        if self.head:
+            self.head.prev = None
+        else:
+            self.tail = None
+        self._length -= 1
+        return removed_data
