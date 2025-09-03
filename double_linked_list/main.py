@@ -59,3 +59,48 @@ class DoublyLinkedList:
             self.head = None
         self._length -= 1
         return removed_data
+
+
+    def remove(self, data):
+        current = self.head
+        while current:
+            if current.data == data:
+                if current.prev:
+                    current.prev.next = current.next
+                if current.next:
+                    current.next.prev = current.prev
+                if current == self.head:
+                    self.head = current.next
+                if current == self.tail:
+                    self.tail = current.prev
+                self._length -= 1
+                return True
+            current = current.next
+        return False
+    
+    def remove_value(self, data):
+       if not self._length:
+           raise ValueError("List is empty")
+       if self.head.data == data:
+           return self.pop_left()
+       if self.tail.data == data:
+           return self.pop_right()
+       previous_node = self.head
+       current_node = self.head.next
+       while current_node:
+           if current_node.data == data:
+               previous_node.next = current_node.next
+               if current_node.next:
+                   current_node.next.prev = previous_node
+               self._length -= 1
+               return True
+           previous_node = current_node
+           current_node = current_node.next
+       return False
+    def find(self, data):
+        current = self.head
+        while current:
+            if current.data == data:
+                return True
+            current = current.next
+        return False
