@@ -97,6 +97,8 @@ class DoublyLinkedList:
            previous_node = current_node
            current_node = current_node.next
        return False
+   
+    
     def find(self, data):
         current = self.head
         while current:
