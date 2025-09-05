@@ -10,7 +10,7 @@ class Stack:
         self.max_allowed_size = 10
 
     def push(self, value):
-        if self.size >= self.max_allowed_size:
+        if self.size >= self.max_allowed_size: 
             raise OverflowError("Stack overflow")
         new_node = Node(value)
         new_node.next = self.top
